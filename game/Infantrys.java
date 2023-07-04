@@ -4,8 +4,8 @@ public abstract class Infantrys extends Unit {
 
     public int mobility; //мобильность
 
-    public Infantrys(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int mobility){
-        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage);
+    public Infantrys(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x,  int y, int mobility){
+        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, x, y);
         this.mobility = mobility;
 }
 

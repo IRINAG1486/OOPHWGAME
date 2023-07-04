@@ -4,13 +4,13 @@ public class Crossbowman extends Shooters {
 
     public int arrays;
 
-    public Crossbowman(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int firing_range, int arrays){
-        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, firing_range);
+    public Crossbowman(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x, int y, int firing_range, int arrays){
+        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, x, y, firing_range);
         this.arrays = arrays;
     }
 
-    public Crossbowman(String name){
-        super(name, 7, 7, 6, 6, 9, 9, 7, 6, 10);
+    public Crossbowman(String name, int x, int y){
+        super(name, 7, 7, 6, 6, 9, 9, 7, x, y, 6, 10);
         this.arrays = 50;
     }
 
@@ -27,6 +27,10 @@ public class Crossbowman extends Shooters {
     public int useArrays(){ //использование стрел
         arrays -=1;
         return arrays;
+    }
+
+    public String getInfo(){
+        return "Арбалетчик" + " " + name;
     }
 
     

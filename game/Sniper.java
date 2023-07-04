@@ -4,13 +4,13 @@ public class Sniper extends Shooters {
 
     public int ammunition;
     
-    public Sniper(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int firing_range, int ammunition){
-        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, firing_range);
+    public Sniper(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x, int y, int firing_range, int ammunition){
+        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, x, y, firing_range);
         this.ammunition = ammunition;
     }
 
-    public Sniper(String name){
-        super(name, 8, 8, 9, 8, 9, 9, 3, 3, 10);
+    public Sniper(String name, int x, int y){
+        super(name, 8, 8, 9, 8, 9, 9, 3, x, y, 3, 10);
         
         this.ammunition = 100;
     }
@@ -33,5 +33,8 @@ public class Sniper extends Shooters {
         return ammunition;
     }
 
+    public String getInfo(){
+        return "Снайпер" + " " + name;
+    }
     
 }
