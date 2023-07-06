@@ -12,7 +12,7 @@ public class Mage extends Magicians {
     }
 
     public String toString(){
-        return String.format("name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nmana: %d \nknowledge: %d", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, mana, knowledge);
+        return String.format("Маг name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nmana: %d \nknowledge: %d", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, mana, knowledge);
     }
 
     public int destructiveMantra(){ // разрушающее заклинание
@@ -20,7 +20,7 @@ public class Mage extends Magicians {
     }
 
     public String getInfo(){
-        return "Маг" + " " + name;
+        return "Маг" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
     }
     
 }

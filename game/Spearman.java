@@ -14,7 +14,7 @@ public class Spearman extends Infantrys {
     }
 
     public String toString(){
-        return String.format("name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nmobility: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, mobility);
+        return String.format("Копейщик name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nmobility: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, mobility);
     }
 
 
@@ -23,7 +23,7 @@ public class Spearman extends Infantrys {
     }
 
     public String getInfo(){
-        return "Копейщик" + " " + name;
+        return "Копейщик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
     }
 
     

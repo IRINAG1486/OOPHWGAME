@@ -2,8 +2,8 @@ package game;
 
 public class Countryman extends Infantrys {
 
-    public Countryman(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x, int y, int mobility, int reticence, int elusiveness){
-        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, mobility, x, y);
+    public Countryman(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x, int y, int mobility){
+        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, x, y, mobility);
         
     }
 
@@ -13,7 +13,7 @@ public class Countryman extends Infantrys {
     }
 
     public String toString(){
-        return String.format("name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nmobility: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, mobility);
+        return String.format("Крестьянин name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nmobility: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, mobility);
     }
 
 
@@ -22,7 +22,10 @@ public class Countryman extends Infantrys {
     }
 
     public String getInfo(){
-        return "Крестьянин" + " " + name;
-    }
+        return "Крестьянин" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
+    } 
+
+    
+    
     
 }

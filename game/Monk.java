@@ -15,7 +15,7 @@ public class Monk extends Magicians {
     }
 
     public String toString(){
-        return String.format("name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nmana: %d \nknowledge: %d \nhealing: %d", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, mana, knowledge, healing);
+        return String.format("Монах name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nmana: %d \nknowledge: %d \nhealing: %d", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, mana, knowledge, healing);
     }
 
     public int setHealing(int healing){
@@ -37,7 +37,7 @@ public class Monk extends Magicians {
     }
 
     public String getInfo(){
-        return "Монах" + " " + name;
+        return "Монах" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
     }
 
    

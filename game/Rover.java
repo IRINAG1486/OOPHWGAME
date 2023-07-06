@@ -18,7 +18,7 @@ public class Rover extends Infantrys {
     }
 
     public String toString(){
-        return String.format("name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nmobility: %d \nreticence: %d \nelusiveness: %d", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, mobility, reticence, elusiveness);
+        return String.format("Разбойник name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nmobility: %d \nreticence: %d \nelusiveness: %d", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, mobility, reticence, elusiveness);
     }
 
     public String getReticence(){
@@ -43,7 +43,7 @@ public class Rover extends Infantrys {
     }
 
     public String getInfo(){
-        return "Разбойник" + " " + name;
+        return "Разбойник" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
     }
 
 

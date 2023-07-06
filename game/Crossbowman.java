@@ -15,7 +15,7 @@ public class Crossbowman extends Shooters {
     }
 
     public String toString(){
-        return String.format("name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nfiring_range: %d \narrays: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, firing_range, arrays);
+        return String.format("Арбалетчик name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nfiring_range: %d \narrays: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, firing_range, arrays);
     }
 
 
@@ -30,7 +30,7 @@ public class Crossbowman extends Shooters {
     }
 
     public String getInfo(){
-        return "Арбалетчик" + " " + name;
+        return "Арбалетчик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
     }
 
     

@@ -37,7 +37,7 @@ public abstract class Unit implements InGameInterface {
         this.coordinate = new Coordinate(x, y);
     }
 
-    public String getName1(){
+    public String getName(){
         return String.format("name: %s", name);
     }
 
@@ -74,34 +74,41 @@ public abstract class Unit implements InGameInterface {
         return String.format("Сurrent damage indicator: %d", damage);
     }
 
+   
 
     public int doAttack(){  //атака
         return damage;
     }
 
     public String getInfo(){
-        return name;
+        return name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
     }
 
     public void step(){};
 
 
-    public double[] findClosestEnemy(ArrayList <Unit> list){
+    public void findClosestEnemy(ArrayList <Unit> list){
         double max = 1000;
-        double index = 0;
+        int index = 0;
+        
         for (int i = 0; i < list.size(); i++ ) {
 
            if (coordinate.calculateDistance(list.get(i).coordinate) < max){
                 max = coordinate.calculateDistance(list.get(i).coordinate);
-                index = i;
+                index = i;  
            }
         }
-        return new double[]{
-            max, index
-        };
+        //double[] data = new double[]{max, index};
+        System.out.println("Ближайший враг " + list.get(index).name + " " + "индекс " + index + " " + "находящийся на дистанции " + max);
+        //System.out.println(max);
+        //System.out.println(index);
+        // return new double[]{
+        //     max, index
+        // };
+        
+
     }
 
-    
     
     
 }

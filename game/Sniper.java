@@ -19,7 +19,7 @@ public class Sniper extends Shooters {
     
 
     public String toString(){
-        return String.format("name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nfiring_range: %d \nammunition: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, firing_range, ammunition);
+        return String.format("Снайпер name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nfiring_range: %d \nammunition: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, firing_range, ammunition);
     }
 
 
@@ -34,7 +34,7 @@ public class Sniper extends Shooters {
     }
 
     public String getInfo(){
-        return "Снайпер" + " " + name;
+        return "Снайпер" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
     }
     
 }

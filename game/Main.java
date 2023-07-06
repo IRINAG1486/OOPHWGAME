@@ -5,39 +5,49 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-
-        Countryman farmer = new Countryman(getName(), 2, 3);
-
         ArrayList <Unit> list1 = new ArrayList<>();
         ArrayList <Unit> list2 = new ArrayList<>();
 
+        Countryman farmer = new Countryman(getName(), getX(), getY());
+        System.out.println(farmer);
+
         for(int i = 0; i <=10; i++){
-           
-            list1.add(new Countryman(getName()));
-            list1.add(new Mage(getName()));
-            list1.add(new Crossbowman(getName()));
-            list1.add(new Monk(getName()));
-            list1.add(new Rover(getName()));
-            list1.add(new Sniper(getName()));
-            list1.add(new Spearman(getName()));
+                      
+            list1.add(new Mage(getName(), getX(), getY()));
+            list1.add(new Crossbowman(getName(), getX(), getY()));
+            list1.add(new Monk(getName(), getX(), getY()));
+            list1.add(new Rover(getName(), getX(), getY()));
+            list1.add(new Sniper(getName(), getX(), getY()));
+            list1.add(new Spearman(getName(), getX(), getY()));
+            list1.add(new Countryman(getName(), getX(), getY()));
         }
-        list1.forEach(n -> System.out.println(n.getInfo()));
+        for(int i = 0; i < list1.size(); i++){
+            System.out.println("Противник: " + i + " " + list1.get(i).getInfo());
+        }
+        //list1.forEach(n -> System.out.println(n + n.getInfo()));
+        
+       farmer.findClosestEnemy(list1);
+        
+        System.out.println();
 
-        // // System.out.println(list1.get(0).getInfo());
-        // System.out.println();
+        Spearman sperman = new Spearman(getName(), getX(), getY());
+        System.out.println(sperman);
 
-        // for(int i = 0; i <=10; i++){
-        //     list2.add(new Spearman(getName()));
-        //     list2.add(new Sniper(getName()));
-        //     list2.add(new Rover(getName()));
-        //     list2.add(new Monk(getName()));
-        //     list2.add(new Mage(getName()));
-        //     list2.add(new Crossbowman(getName()));
-        //     list2.add(new Countryman(getName()));
-        // }
-
+        for(int i = 0; i <=10; i++){
+            list2.add(new Spearman(getName(), getX(), getY()));
+            list2.add(new Sniper(getName(), getX(), getY()));
+            list2.add(new Rover(getName(), getX(), getY()));
+            list2.add(new Monk(getName(), getX(), getY()));
+            list2.add(new Mage(getName(), getX(), getY()));
+            list2.add(new Crossbowman(getName(), getX(), getY()));
+            list2.add(new Countryman(getName(), getX(), getY()));
+        }
+        
+        for(int i = 0; i < list2.size(); i++){
+            System.out.println("Противник: " + i + " " + list2.get(i).getInfo() );
+        }
         //list2.forEach(n -> System.out.println(n.getInfo()));
-
+        sperman.findClosestEnemy(list2);
 
         //Monk monk1 = new Monk("Monax", 2, 1);
         
@@ -98,7 +108,15 @@ public class Main {
         return name;
     }
     
+    private static int getX(){
+        int x = new Random().nextInt(1000);
+        return x;
+    }
 
+    private static int getY(){
+        int y = new Random().nextInt(1000);
+        return y;
+    }
     
 
 }

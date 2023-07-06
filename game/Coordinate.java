@@ -21,7 +21,13 @@ public class Coordinate {
 
     public double calculateDistance(Coordinate coordinates) {
         int deltaX = coordinates.getX() - this.x;
+        
+        //System.out.println(deltaX);
         int deltaY = coordinates.getY() - this.y;
+       
+        //System.out.println(deltaY);
+       
+        //System.out.println(Math.sqrt(deltaX * deltaX + deltaY * deltaY));
         return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
     }
 
