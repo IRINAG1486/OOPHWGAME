@@ -42,8 +42,9 @@ public abstract class Unit implements InGameInterface {
     }
 
     
-    public String getStrength(){
-        return String.format("Сurrent strength indicator: %d", strength);
+    public int getStrength(){
+        return strength;
+        // return String.format("Сurrent strength indicator: %d", strength);
     }
 
     public String getStrengthSpeed(){
@@ -76,18 +77,44 @@ public abstract class Unit implements InGameInterface {
 
    
 
-    public int doAttack(){  //атака
-        return damage;
+  
+    public void doAttack(Unit target) {
+        int damage = 1;
+        target.getDamage(damage);
     }
+
+    public void getDamage(int damage) {
+        if (this.strength - damage > 0) {
+            this.strength -= damage;
+        }
+
+        else {this.strength = 0; 
+        }
+    }
+
+   
+
+    // public void GetСure(int cure) {
+    //     if (this.hp !=0 && this.hp + cure < 200) {
+    //         this.hp += cure;
+    //     }
+    //     else {
+    //         if (this.hp == 0){
+    //             this.hp = 0;
+    //         }
+    //         else{
+    //             this.hp = 200;
+    //         }
+    //     }
 
     public String getInfo(){
         return name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
     }
 
-    public void step(){};
+   
 
 
-    public void findClosestEnemy(ArrayList <Unit> list){
+    public Unit findClosestEnemy(ArrayList <Unit> list){
         double max = 1000;
         int index = 0;
         
@@ -99,16 +126,15 @@ public abstract class Unit implements InGameInterface {
            }
         }
         //double[] data = new double[]{max, index};
-        System.out.println("Ближайший враг " + list.get(index).name + " " + "индекс " + index + " " + "находящийся на дистанции " + max);
+        //System.out.println("Ближайший враг " + list.get(index).name + " " + "индекс " + index + " " + "находящийся на дистанции " + max);
         //System.out.println(max);
         //System.out.println(index);
-        // return new double[]{
-        //     max, index
-        // };
+        return list.get(index);
+    }
         
 
     }
 
     
     
-}
+

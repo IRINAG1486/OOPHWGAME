@@ -8,8 +8,10 @@ public class Main {
         ArrayList <Unit> list1 = new ArrayList<>();
         ArrayList <Unit> list2 = new ArrayList<>();
 
-        Countryman farmer = new Countryman(getName(), getX(), getY());
-        System.out.println(farmer);
+        //Countryman farmer = new Countryman(getName(), getX(), getY());
+        //System.out.println(farmer);
+        Crossbowman crossbowman = new Crossbowman(getName(), getX(), getY());
+        
 
         for(int i = 0; i <=10; i++){
                       
@@ -26,12 +28,12 @@ public class Main {
         }
         //list1.forEach(n -> System.out.println(n + n.getInfo()));
         
-       farmer.findClosestEnemy(list1);
+       //farmer.findClosestEnemy(list1);
         
         System.out.println();
 
-        Spearman sperman = new Spearman(getName(), getX(), getY());
-        System.out.println(sperman);
+        //Spearman sperman = new Spearman(getName(), getX(), getY());
+        //System.out.println(sperman);
 
         for(int i = 0; i <=10; i++){
             list2.add(new Spearman(getName(), getX(), getY()));
@@ -44,10 +46,10 @@ public class Main {
         }
         
         for(int i = 0; i < list2.size(); i++){
-            System.out.println("Противник: " + i + " " + list2.get(i).getInfo() );
+            System.out.println("Противник: " + i + " " + list2.get(i).getInfo() +" "+ list2.get(i).coordinate.calculateDistance(list2.get(i).coordinate) );
         }
         //list2.forEach(n -> System.out.println(n.getInfo()));
-        sperman.findClosestEnemy(list2);
+        //sperman.findClosestEnemy(list2);
 
         //Monk monk1 = new Monk("Monax", 2, 1);
         

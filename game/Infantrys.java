@@ -1,5 +1,5 @@
 package game;
-
+import java.util.ArrayList;
 public abstract class Infantrys extends Unit {
 
     public int mobility; //мобильность
@@ -30,5 +30,8 @@ public abstract class Infantrys extends Unit {
     public int doRecce(){ //разведка
         return damage;
     }
+
+    @Override
+    public void step(ArrayList<Unit> list1, ArrayList <Unit> list2){};
 
 }

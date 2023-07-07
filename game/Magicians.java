@@ -1,5 +1,5 @@
 package game;
-
+import java.util.ArrayList;
 public abstract class Magicians extends Unit {
     
     public int mana; //магия
@@ -22,4 +22,7 @@ public abstract class Magicians extends Unit {
     public int magicAtack(){ //магическая атака
         return strength;
     }
+
+    @Override
+    public void step(ArrayList<Unit> list1, ArrayList <Unit> list2){};
 }

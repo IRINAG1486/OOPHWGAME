@@ -25,7 +25,7 @@ public class Countryman extends Infantrys {
         return "Крестьянин" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
     } 
 
-    
+   
     
     
 }
