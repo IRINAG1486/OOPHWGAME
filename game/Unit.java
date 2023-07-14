@@ -1,7 +1,10 @@
 
 package game;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.Random;
+import java.util.Collections;
 /**
  * Unit
  */
@@ -18,13 +21,14 @@ public abstract class Unit implements InGameInterface {
     public int defense; // защита
     public int vulnerability; //уязвимость
     public int damage; //максимальные повреждения
+    public String state;
     
     public Coordinate coordinate;
 
 
     public static boolean isDead;
 
-    public Unit(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x, int y){
+    public Unit(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x, int y, String state){
         this.name = name;
         this.strength = strength;
         this.speed = speed;
@@ -35,8 +39,12 @@ public abstract class Unit implements InGameInterface {
         this.vulnerability = vulnerability;
         this.damage = damage;
         this.coordinate = new Coordinate(x, y);
+        this.state = state;
     }
 
+    public static boolean isDead() {
+        return isDead;
+    }
     public String getName(){
         return String.format("name: %s", name);
     }
@@ -47,12 +55,15 @@ public abstract class Unit implements InGameInterface {
         // return String.format("Сurrent strength indicator: %d", strength);
     }
 
-    public String getStrengthSpeed(){
+    public String getSpeed(){
         return String.format("Сurrent speed indicator: %d", speed);
     }
 
-    public String getSleight(){
-        return String.format("Сurrent sleight indicator: %d", sleight);
+    // public String getSleight(){
+    //     return String.format("Сurrent sleight indicator: %d", sleight);
+    // }
+    public int getSleight(){
+        return sleight;
     }
 
     public String getStamina(){
@@ -75,7 +86,9 @@ public abstract class Unit implements InGameInterface {
         return String.format("Сurrent damage indicator: %d", damage);
     }
 
-   
+    public String getState(){
+        return state;
+    }
 
   
     public void doAttack(Unit target) {
@@ -86,10 +99,14 @@ public abstract class Unit implements InGameInterface {
     public void getDamage(int damage) {
         if (this.strength - damage > 0) {
             this.strength -= damage;
+            System.out.println(strength);
+        }
+       
+        else {//this.strength = 0; 
+            isDead = true;
+            System.out.println("daed");
         }
 
-        else {this.strength = 0; 
-        }
     }
 
    
@@ -108,7 +125,7 @@ public abstract class Unit implements InGameInterface {
     //     }
 
     public String getInfo(){
-        return name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
+        return name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y  + " " + "ловкост" + " " + sleight;
     }
 
    
@@ -126,14 +143,40 @@ public abstract class Unit implements InGameInterface {
            }
         }
         //double[] data = new double[]{max, index};
-        //System.out.println("Ближайший враг " + list.get(index).name + " " + "индекс " + index + " " + "находящийся на дистанции " + max);
+        System.out.println("Ближайший враг " + list.get(index).name + " " + "индекс " + index + " " + "находящийся на дистанции " + max);
         //System.out.println(max);
         //System.out.println(index);
         return list.get(index);
     }
+    
+   
+//     public void sortCharacter(ArrayList<Unit> list1){
+       
+//         Collections.sort(list1, new Comparator<Unit>() {
+//             @Override
+//             public int compare(Unit o1, Unit o2){
+//                 return o1.getSleight() - o2.getSleight();
+//             }
+            
+            
+//         });
         
+//         for (Unit hero : list1) {
+//             System.out.println(hero.getInfo());
+//     }
+// }
 
+    @Override
+    public void step(ArrayList<Unit> list1, ArrayList <Unit> list2){
+        if (!isDead()) {
+        state = "Stand";
+        }
     }
+}
+
+
+
+    
 
     
     

@@ -3,13 +3,13 @@ package game;
 public class Spearman extends Infantrys {
     
 
-    public Spearman(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x, int y, int mobility){
-        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, x, y, mobility);
+    public Spearman(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x, int y, String state, int mobility){
+        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, x, y, state, mobility);
         
     }
 
     public Spearman(String name, int x, int y){
-       super(name, 9, 8, 7, 8, 9, 9, 7, 8, x, y, 8);
+       super(name, 9, 8, 7, 8, 9, 9, 7, 8, x, y," Stand", 8);
         
     }
 
@@ -23,7 +23,7 @@ public class Spearman extends Infantrys {
     }
 
     public String getInfo(){
-        return "Копейщик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y;
+        return "Копейщик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "ловкост" + " " + sleight;
     }
 
     

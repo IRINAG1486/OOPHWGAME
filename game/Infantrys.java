@@ -4,8 +4,8 @@ public abstract class Infantrys extends Unit {
 
     public int mobility; //мобильность
 
-    public Infantrys(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x,  int y, int mobility){
-        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, x, y);
+    public Infantrys(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x,  int y, String state, int mobility){
+        super(name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, x, y, state);
         this.mobility = mobility;
 }
 
@@ -31,7 +31,6 @@ public abstract class Infantrys extends Unit {
         return damage;
     }
 
-    @Override
-    public void step(ArrayList<Unit> list1, ArrayList <Unit> list2){};
-
+   
 }
+

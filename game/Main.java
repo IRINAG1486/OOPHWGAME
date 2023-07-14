@@ -2,6 +2,7 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,41 +14,70 @@ public class Main {
         Crossbowman crossbowman = new Crossbowman(getName(), getX(), getY());
         
 
-        for(int i = 0; i <=10; i++){
+        for(int i = 0; i <=2; i++){
                       
             list1.add(new Mage(getName(), getX(), getY()));
             list1.add(new Crossbowman(getName(), getX(), getY()));
-            list1.add(new Monk(getName(), getX(), getY()));
-            list1.add(new Rover(getName(), getX(), getY()));
-            list1.add(new Sniper(getName(), getX(), getY()));
-            list1.add(new Spearman(getName(), getX(), getY()));
+            //list1.add(new Monk(getName(), getX(), getY()));
+            //list1.add(new Rover(getName(), getX(), getY()));
+            //list1.add(new Sniper(getName(), getX(), getY()));
+            //list1.add(new Spearman(getName(), getX(), getY()));
             list1.add(new Countryman(getName(), getX(), getY()));
         }
         for(int i = 0; i < list1.size(); i++){
             System.out.println("Противник: " + i + " " + list1.get(i).getInfo());
         }
         //list1.forEach(n -> System.out.println(n + n.getInfo()));
-        
-       //farmer.findClosestEnemy(list1);
+        //farmer.findClosestEnemy(list1);
+       
         
         System.out.println();
 
         //Spearman sperman = new Spearman(getName(), getX(), getY());
         //System.out.println(sperman);
 
-        for(int i = 0; i <=10; i++){
-            list2.add(new Spearman(getName(), getX(), getY()));
+        for(int i = 0; i <=2; i++){
+            //list2.add(new Spearman(getName(), getX(), getY()));
             list2.add(new Sniper(getName(), getX(), getY()));
             list2.add(new Rover(getName(), getX(), getY()));
-            list2.add(new Monk(getName(), getX(), getY()));
-            list2.add(new Mage(getName(), getX(), getY()));
+            //list2.add(new Monk(getName(), getX(), getY()));
+           // list2.add(new Mage(getName(), getX(), getY()));
             list2.add(new Crossbowman(getName(), getX(), getY()));
-            list2.add(new Countryman(getName(), getX(), getY()));
+            //list2.add(new Countryman(getName(), getX(), getY()));
         }
         
         for(int i = 0; i < list2.size(); i++){
-            System.out.println("Противник: " + i + " " + list2.get(i).getInfo() +" "+ list2.get(i).coordinate.calculateDistance(list2.get(i).coordinate) );
+            System.out.println("Противник: " + i + " " + list2.get(i).getInfo());
         }
+
+        ArrayList <Unit> allHeroes = new ArrayList<>();
+        allHeroes.addAll(list1);
+        allHeroes.addAll(list2);
+
+        Collections.sort(allHeroes, (o1, o2) -> o2.getSleight() - o1.getSleight());
+        for (Unit hero : allHeroes) {
+            System.out.println(hero.getInfo());
+        }
+
+        for(int i = 1; i<=10; i++)
+        {
+            System.out.println("Round " + i + ":");
+    
+            for (Unit heroes : allHeroes) {
+               heroes.step(list1, list2);;
+                System.out.println( heroes.getInfo());
+            }
+    
+            System.out.println();
+        }
+
+        //crossbowman.getDamage(1);
+        //crossbowman.findClosestEnemy(list1);
+        //crossbowman.doAttack( crossbowman.findClosestEnemy(list1));
+
+        //crossbowman.step(list1, list2);
+        
+        
         //list2.forEach(n -> System.out.println(n.getInfo()));
         //sperman.findClosestEnemy(list2);
 
