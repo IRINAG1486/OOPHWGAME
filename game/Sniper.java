@@ -10,7 +10,7 @@ public class Sniper extends Shooters {
     }
 
     public Sniper(String name, int x, int y){
-        super(name, 10, 8, 9, 8, 8, 8, 8, 1, x, y, "Stand", 10, 10 );
+        super(name, 10, 8, 10, 8, 8, 8, 8, 1, x, y, "Stand", 10, 10 );
         
        
     }
