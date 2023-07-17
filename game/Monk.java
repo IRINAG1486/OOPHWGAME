@@ -1,4 +1,5 @@
 package game;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Monk extends Magicians {
@@ -11,11 +12,12 @@ public class Monk extends Magicians {
     }
     
     public Monk(String name, int x, int y){
-        super(name, 7, 7, 7, 2, 3, 4, 8, 8, x, y, "Stand", 10, 10);
+        super(name, 10, 6, 4, 5, 5, 5, 5, 1, x, y, "Stand", 10, 10);
     }
 
+    @Override
     public String toString(){
-        return String.format("Монах name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nmana: %d \nknowledge: %d \nhealing: %d", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, mana, knowledge, healing);
+        return String.format("Монах name: %s \nstrength: %d \nsleight: %d \ndamage: %d \nx: %d \ny: %d ", name, strength,  sleight, damage, coordinate.x, coordinate.y);
     }
 
     public int setHealing(int healing){
@@ -37,8 +39,37 @@ public class Monk extends Magicians {
     }
 
     public String getInfo(){
-        return "Монах" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "ловкост" + " " + sleight;
+        return "Монах" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight;
     }
 
-   
+    @Override
+    public void step(ArrayList <Unit> list1, ArrayList <Unit> list2) {
+        int minStrength = 5;
+        Unit currentTeamMate =list2.get(0);
+        System.out.println("Ходит" + " " + getInfo());
+        if (getStrength() == 0 ) {
+            System.out.println(getInfo() + " израсходовал силы " + "состояние " + state);
+            return;
+        }
+        for (Unit unit: list2){
+            if (unit.strength < minStrength){
+                currentTeamMate = unit;
+                System.out.println(getInfo() + " лечит " + currentTeamMate.getInfo());
+                currentTeamMate.getDamage(-damage);
+                state = "Healing";
+                strength++;
+                System.out.println(getInfo() + " состояние " + state);
+                return;
+            }
+            
+        }
+        Unit currentEnemy = findClosestEnemy(list1);
+        if (currentEnemy.getState() == "Dead"){
+            System.out.println("Ближайший враг мертв " + currentEnemy.getName());
+            return;
+        }
+        System.out.println(getInfo() + " атакует " + currentEnemy.getInfo() + " " + currentEnemy.state );
+        doAttack(currentEnemy);
+        state = "Attack";
+    }
 }

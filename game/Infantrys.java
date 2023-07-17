@@ -31,6 +31,22 @@ public abstract class Infantrys extends Unit {
         return damage;
     }
 
-   
+    @Override
+    public void step(ArrayList <Unit> list1, ArrayList <Unit> list2) {
+        System.out.println("Ходит" + " " + getInfo());
+        if (getStrength() == 0 ) {
+            System.out.println(getInfo() + " израсходовал силы " + " состояние " + state);
+            return;
+        }
+        Unit currentEnemy = findClosestEnemy(list2);
+        if (currentEnemy.getState() == "Dead"){
+            System.out.println("Ближайший враг мертв " + currentEnemy.getName());
+            currentEnemy.coordinate.getX(); 
+        }
+        System.out.println(getInfo() + " атакует " + currentEnemy.getInfo() + " " + currentEnemy.state  );
+        doAttack(currentEnemy);
+        state = "Attack";
+       
+    }
 }
 

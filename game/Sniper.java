@@ -1,5 +1,5 @@
 package game;
-
+import java.util.ArrayList;
 public class Sniper extends Shooters {
 
     
@@ -10,16 +10,14 @@ public class Sniper extends Shooters {
     }
 
     public Sniper(String name, int x, int y){
-        super(name, 6, 8, 6, 8, 7, 6, 8, 6, x, y, "Stand", 10, 10 );
+        super(name, 10, 8, 9, 8, 8, 8, 8, 1, x, y, "Stand", 10, 10 );
         
        
     }
-      
-        
-    
-
+   
+    @Override
     public String toString(){
-        return String.format("Снайпер name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nfiring_range: %d \nammunition: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, firing_range, arrays);
+        return String.format("Снайпер name: %s \nstrength: %d \nsleight: %d \ndamage: %d \nx: %d \ny: %d \narrays: %d ", name, strength, sleight, damage, coordinate.x, coordinate.y, arrays);
     }
 
 
@@ -33,8 +31,39 @@ public class Sniper extends Shooters {
         return arrays;
     }
 
+    @Override
     public String getInfo(){
-        return "Снайпер" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "ловкост" + " " + sleight;
+        return "Снайпер" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight;
     }
+
+    @Override
+    public void step(ArrayList <Unit> list1, ArrayList <Unit> list2) {
+        System.out.println("Ходит" + " " + getInfo());
+        if (getStrength() == 0 || arrays == 0) {
+            System.out.println(getName() + " израсходовал силы или стрелы " + "состояние " + state);
+            return;
+        }
+        Unit currentEnemy = findClosestEnemy(list2);
+        if (currentEnemy.getState() == "Dead"){
+            System.out.println("Ближайший враг мертв " + currentEnemy.getName());
+            return;
+        }
+        System.out.println(getInfo() + " атакует " + currentEnemy.getInfo() + " " + currentEnemy.state);
+        doAttack(currentEnemy);
+        state = "Attack";
+       
+        for (Unit unit: list1){
+            if(unit instanceof Countryman && unit.state == "Stand"){
+                arrays+=1;
+                unit.state = "Busy";
+                System.out.println(getInfo() + " получил стрелы от " + unit.getInfo() + " крестьянин "  + unit.state);
+                return;
+            }
+           
+           
+        }
+        arrays--;
+        System.out.println("Количесиво стрел " + arrays);
+}
     
 }

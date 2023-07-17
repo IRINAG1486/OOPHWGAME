@@ -10,12 +10,12 @@ public class Crossbowman extends Shooters {
     }
 
     public Crossbowman(String name, int x, int y){
-        super(name, 7, 7, 6, 6, 9, 9, 7, 8, x, y, "Stand", 9, 9);
+        super(name, 10, 8, 9, 8, 8, 8, 8, 1, x, y, "Stand", 9, 10);
         
     }
-
+    @Override
     public String toString(){
-        return String.format("Арбалетчик name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nfiring_range: %d \narrays: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, firing_range, arrays);
+        return String.format("Арбалетчик name: %s \nstrength: %d \nsleight: %d \ndamage: %d \nx: %d \ny: %d \narrays: %d ", name, strength, sleight, damage, coordinate.x, coordinate.y, arrays);
     }
 
 
@@ -29,11 +29,38 @@ public class Crossbowman extends Shooters {
         return arrays;
     }
 
+    @Override
     public String getInfo(){
-        return "Арбалетчик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "ловкост" + " " + sleight;
+        return "Арбалетчик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight;
     }
 
-    
+    @Override
+    public void step(ArrayList <Unit> list1, ArrayList <Unit> list2) {
+        System.out.println("Ходит" + " " + getInfo());
+        if (getStrength() == 0 || arrays == 0) {
+            System.out.println(getName() + " израсходовал силы или стрелы " + "состояние " + state);
+            return;
+        }
+        Unit currentEnemy = findClosestEnemy(list1);
+        if (currentEnemy.getState() == "Dead"){
+            System.out.println("Ближайший враг мертв " + currentEnemy.getName());
+            return;
+        }
+        System.out.println(getInfo() + " атакует " + currentEnemy.getInfo() + " крестьянин " + currentEnemy.state);
+        doAttack(currentEnemy);
+        state = "Attack";
+       
+        for (Unit unit: list2){
+            if(unit instanceof Countryman && unit.state == "Stand"){
+                arrays+=1;
+                unit.state = "Busy";
+                System.out.println(getInfo() + " получил стрелы от " + unit.getInfo() + " "  + unit.state);
+                return;
+            } 
+        }
+        arrays--;
+        System.out.println("Количесиво стрел " + arrays);
+}
 
 
 }

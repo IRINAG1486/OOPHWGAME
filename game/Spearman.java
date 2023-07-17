@@ -9,12 +9,13 @@ public class Spearman extends Infantrys {
     }
 
     public Spearman(String name, int x, int y){
-       super(name, 9, 8, 7, 8, 9, 9, 7, 8, x, y," Stand", 8);
+       super(name, 10, 8, 9, 7, 7, 7, 7, 1, x, y," Stand", 8);
         
     }
 
+    @Override
     public String toString(){
-        return String.format("Копейщик name: %s \nstrength: %d \nspeed: %d \nsleight: %d \nstamina: %d \ndetermination: %d \ndefense: %d \nvulnerability: %d \ndamage: %d \nx: %d \ny: %d \nmobility: %d ", name, strength, speed, sleight, stamina, determination, defense, vulnerability, damage, coordinate.x, coordinate.y, mobility);
+        return String.format("Копейщик name: %s \nstrength: %d \nsleight: %d \ndamage: %d \nx: %d \ny: %d ", name, strength, sleight, damage, coordinate.x, coordinate.y);
     }
 
 
@@ -22,8 +23,9 @@ public class Spearman extends Infantrys {
         return strength;
     }
 
+    @Override
     public String getInfo(){
-        return "Копейщик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "ловкост" + " " + sleight;
+        return "Копейщик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight;
     }
 
     
