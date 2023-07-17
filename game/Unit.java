@@ -26,7 +26,7 @@ public abstract class Unit implements InGameInterface {
     public Coordinate coordinate;
 
 
-    public static boolean isDied;
+    public boolean isDied;
 
     public Unit(String name, int strength, int speed, int sleight, int stamina, int determination, int defense, int vulnerability, int damage, int x, int y, String state){
         this.name = name;

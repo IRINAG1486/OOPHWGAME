@@ -2,12 +2,14 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.Collections;
 
 public class Main {
+    public static ArrayList <Unit> list1 = new ArrayList<>();
+    public static ArrayList <Unit> list2 = new ArrayList<>();
+    public static ArrayList <Unit> allHeroes = new ArrayList<>();
     public static void main(String[] args) {
-        ArrayList <Unit> list1 = new ArrayList<>();
-        ArrayList <Unit> list2 = new ArrayList<>();
 
         for(int i = 1; i <11; i++){
             switch (new Random().nextInt(1, 5)) {
@@ -75,7 +77,6 @@ public class Main {
 
         System.out.println();
 
-        ArrayList <Unit> allHeroes = new ArrayList<>();
         allHeroes.addAll(list1);
         allHeroes.addAll(list2);
 
@@ -84,13 +85,29 @@ public class Main {
             System.out.println(hero.getInfo());
         }
 
-        for(int i = 1; i<=1; i++){
-            System.out.println();
-            System.out.println("Round " + i + ":");
+        Scanner in = new Scanner(System.in);
+        while (true){
+            View.view();
+            in.nextLine();
+
+        
+
+        // for(int i = 1; i<=1; i++){
+        //     System.out.println();
+        //     System.out.println("Round " + i + ":");
     
             for (Unit heroes : allHeroes) {
                heroes.step(list1, list2);;
-            
+            }
+
+            if(isTeamDie(list1)){
+                System.out.println("Команда 2 выйграла!"); 
+                break;
+            }
+
+            if(isTeamDie(list2)){
+                System.out.println("Команда 1 выйграла!"); 
+                break;
             }
     
           
@@ -111,6 +128,16 @@ public class Main {
     private static int getY(){
         int y = new Random().nextInt(11);
         return y;
+    }
+
+    static boolean isTeamDie(ArrayList <Unit> list){
+        for(Unit hero: list){
+            if (!hero.isDied){ 
+                return false;
+            }
+            
+        }
+        return true;
     }
 }
 

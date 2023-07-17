@@ -13,7 +13,7 @@ public class Countryman extends Infantrys {
     }
 
     public String toString(){
-        return String.format("Крестьянин name: %s \nstrength: %d \nsleight: %d \ndamage: %d \nx: %d \ny: %d ", name, strength, sleight, damage, coordinate.x, coordinate.y);
+        return String.format("крестьянин name: %s \nstrength: %d \nsleight: %d \ndamage: %d \nx: %d \ny: %d ", name, strength, sleight, damage, coordinate.x, coordinate.y);
     }
 
 

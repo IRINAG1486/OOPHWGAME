@@ -17,7 +17,7 @@ public class Monk extends Magicians {
 
     @Override
     public String toString(){
-        return String.format("Монах name: %s \nstrength: %d \nsleight: %d \ndamage: %d \nx: %d \ny: %d ", name, strength,  sleight, damage, coordinate.x, coordinate.y);
+        return String.format("монах name: %s \nstrength: %d \nsleight: %d \ndamage: %d \nx: %d \ny: %d ", name, strength,  sleight, damage, coordinate.x, coordinate.y);
     }
 
     public int setHealing(int healing){
