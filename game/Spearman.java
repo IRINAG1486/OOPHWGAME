@@ -9,7 +9,7 @@ public class Spearman extends Infantrys {
     }
 
     public Spearman(String name, int x, int y){
-       super(name, 10, 8, 9, 7, 7, 7, 7, 1, x, y," Stand", 8);
+       super(name, 10, 8, 9, 7, 7, 7, 7, 2, x, y," Stand", 8);
         
     }
 
@@ -25,8 +25,10 @@ public class Spearman extends Infantrys {
 
     @Override
     public String getInfo(){
-        return "Копейщик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight;
+        return "Копейщик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight + " сила " + strength + " " + state ;
     }
+
+    
 
     
 

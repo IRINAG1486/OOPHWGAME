@@ -28,16 +28,7 @@ public class Main {
                
             } 
         }         
-            //list1.add(new Mage(getName(), getX(), getY()));
-            //list1.add(new Crossbowman(getName(), getX(), getY()));
-            //list1.add(new Monk(getName(), getX(), getY()));
-            //list1.add(new Rover(getName(), getX(), getY()));
-            //list1.add(new Sniper(getName(), getX(), getY()));
-            //list1.add(new Spearman(getName(), getX(), getY()));
-            //list1.add(new Countryman(getName(), getX(), getY()));
-            //list1.add(new Mage(getName(), getX(), getY()));
-            
-        
+           
         for(int i = 0; i < list1.size(); i++){
             System.out.println("Команда 1: " + i + " " + list1.get(i).getInfo());
         }
@@ -61,15 +52,7 @@ public class Main {
                
             } 
         }      
-            //list2.add(new Spearman(getName(), getX(), getY()));
-            //list2.add(new Sniper(getName(), getX(), getY()));
-            //list2.add(new Rover(getName(), getX(), getY()));
-            //list2.add(new Monk(getName(), getX(), getY()));
-            //list2.add(new Monk(getName(), getX(), getY()));
-            //list2.add(new Crossbowman(getName(), getX(), getY()));
-            //list2.add(new Countryman(getName(), getX(), getY()));
-            //list2.add(new Countryman(getName(), getX(), getY()));
-        
+          
         
         for(int i = 0; i < list2.size(); i++){
             System.out.println("Команда 2: " + i + " " + list2.get(i).getInfo());
@@ -87,19 +70,23 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
         while (true){
+            
             View.view();
             in.nextLine();
 
         
 
-        // for(int i = 1; i<=1; i++){
-        //     System.out.println();
-        //     System.out.println("Round " + i + ":");
+        
     
             for (Unit heroes : allHeroes) {
-               heroes.step(list1, list2);;
-            }
+                if(list1.contains(heroes)){
+                    heroes.step(list1, list2);
+                }
+                else heroes.step(list2, list1);;
+            
 
+            
+            }
             if(isTeamDie(list1)){
                 System.out.println("Команда 2 выйграла!"); 
                 break;
@@ -109,12 +96,10 @@ public class Main {
                 System.out.println("Команда 1 выйграла!"); 
                 break;
             }
-    
-          
-        }
-
+            }
         
-    }
+    
+}
     private static String getName(){
         String name = String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
         return name;
@@ -132,7 +117,8 @@ public class Main {
 
     static boolean isTeamDie(ArrayList <Unit> list){
         for(Unit hero: list){
-            if (!hero.isDied){ 
+            if (hero.getStrength() != 0  ){ 
+                
                 return false;
             }
             
@@ -140,6 +126,7 @@ public class Main {
         return true;
     }
 }
+
 
 
     

@@ -28,31 +28,35 @@ public abstract class Magicians extends Unit {
     public void step(ArrayList <Unit> list1, ArrayList <Unit> list2) {
         int minStrength = 5;
         Unit currentTeamMate =list1.get(0);
-        System.out.println("Ходит" + " " + getInfo());
+        //System.out.println("Ходит" + " " + getInfo());
         if (getStrength() == 0 ) {
-            System.out.println(getInfo() + " израсходовал силы " + "состояние " + state);
+            //System.out.println(getInfo() + " израсходовал силы " + "состояние " + state);
             return;
         }
         for (Unit unit: list1){
-            if (unit.strength < minStrength){
+            if (unit.strength > 0 && unit.strength < minStrength){
                 currentTeamMate = unit;
-                System.out.println(getInfo() + " лечит " + currentTeamMate.getInfo());
+                //System.out.println(getInfo() + " лечит " + currentTeamMate.getInfo());
                 currentTeamMate.getDamage(-damage);
                 state = "Healing";
-                strength++;
-                System.out.println(getInfo() + " состояние " + state);
+                strength+=1;
+                //System.out.println(getInfo() + " состояние " + state);
                 return;
             }
             
         }
+       
         Unit currentEnemy = findClosestEnemy(list2);
-        if (currentEnemy.getState() == "Dead"){
-            System.out.println("Ближайший враг мертв " + currentEnemy.getName());
-            return;
-        }
-        System.out.println(getInfo() + " атакует " + currentEnemy.getInfo() + " " + currentEnemy.state );
+        if(currentEnemy != null){
+        //System.out.println(getInfo() + " атакует " + currentEnemy.getInfo());
         doAttack(currentEnemy);
         state = "Attack";
-    }
+        //System.out.println(currentEnemy.strength);
+        //System.out.println("Состояние врага " + currentEnemy.state );
+        }
+        else return;
+
+        
     
+}
 }

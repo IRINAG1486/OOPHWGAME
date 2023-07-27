@@ -85,61 +85,53 @@ public abstract class Unit implements InGameInterface {
 
     
     public void doAttack(Unit target) {
-        //int damage = 1;
+        int damage = 5;
         target.getDamage(damage);
     }
 
     public void getDamage(int damage) {
         if (this.strength - damage > 0) {
             this.strength -= damage;
-            System.out.println("Остаток силы" + strength);
+            //System.out.println("Остаток силы героя " + strength);
         }
        
         else { 
             isDied = true;
             state = "Dead";
             strength = 0;
-            System.out.println(getInfo() + "Состояние" + state);
+            //System.out.println(getInfo() + " состояние" + state);
         }
     }
 
 
     public String getInfo(){
-        return name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y  + " " + " инициатива " + " " + sleight;
+        return name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y  + " " + " инициатива " + " " + sleight + " сила " + strength + " " + state ;
     }
 
 
     public Unit findClosestEnemy(ArrayList <Unit> list){
-        double closestDistance = 1000;
+        double closestDistance = Double.MAX_VALUE;
         int index = 0;
         Unit closestEnemy = null;
         for (int i = 0; i < list.size(); i++ ) {
 
-           if (coordinate.calculateDistance(list.get(i).coordinate) < closestDistance){
+           if (coordinate.calculateDistance(list.get(i).coordinate) < closestDistance && list.get(i).getState() != "Dead"){
                 closestDistance = coordinate.calculateDistance(list.get(i).coordinate);
                 index = i;
                 closestEnemy =  list.get(index);
+                //System.out.println("Ближайший враг " + list.get(index).name + " " + "индекс " + index + " " + "находящийся на дистанции " + closestDistance + " " + closestEnemy.getState());
            }
         }
-        System.out.println("Ближайший враг " + list.get(index).name + " " + "индекс " + index + " " + "находящийся на дистанции " + closestDistance);
+       
         return closestEnemy;
     }
     
-
-     
-
-    // public void GetСure(int cure) {
-    //     if (this.hp !=0 && this.hp + cure < 200) {
-    //         this.hp += cure;
-    //     }
-    //     else {
-    //         if (this.hp == 0){
-    //             this.hp = 0;
-    //         }
-    //         else{
-    //             this.hp = 200;
-    //         }
-    //     }
+    public void move(Coordinate enemyPosition, ArrayList<Unit> teamMates){
+        if(!coordinate.containsByPosition(coordinate.newCoordinate(enemyPosition, teamMates), teamMates)){
+            //for (int i = 0; i < list.size(); i++ ){
+            coordinate = coordinate.newCoordinate(enemyPosition, teamMates);
+        }
+    }
    
 }
 

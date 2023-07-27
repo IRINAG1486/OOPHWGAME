@@ -8,7 +8,7 @@ public class Countryman extends Infantrys {
     }
 
     public Countryman(String name, int x, int y){
-       super(name, 10, 5, 3, 3, 1, 1, 8, 2, x, y, "Stand", 5);
+       super(name, 10, 5, 3, 3, 1, 1, 8, 4, x, y, "Stand", 5);
         
     }
 
@@ -23,19 +23,19 @@ public class Countryman extends Infantrys {
 
     @Override
     public String getInfo(){
-        return "Крестьянин" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight;
+        return "Крестьянин" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight + " сила " + strength + " " + state ;
     } 
 
     @Override
     public void step(ArrayList <Unit> list1, ArrayList <Unit> list2) {
-        System.out.println("Ходит" + " " + getInfo()); 
+        //System.out.println("Ходит" + " " + getInfo()); 
         if (getStrength() == 0 ) {
-            System.out.println(getInfo() + " израсходовал силы " + " состояние " + state);
+            //System.out.println(getInfo() + " израсходовал силы " + " состояние " + state);
             return;
         }
         if(state == "Busy"){
         state = "Stand";
-        System.out.println((getInfo() + " выполнил работу " + "состояние " + state));
+        //System.out.println((getInfo() + " выполнил работу " + "состояние " + state));
         }
        
        

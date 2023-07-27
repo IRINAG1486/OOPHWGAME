@@ -10,7 +10,7 @@ public class Crossbowman extends Shooters {
     }
 
     public Crossbowman(String name, int x, int y){
-        super(name, 10, 8, 9, 8, 8, 8, 8, 1, x, y, "Stand", 9, 10);
+        super(name, 10, 8, 9, 8, 8, 8, 8, 4, x, y, "Stand", 9, 10);
         
     }
     @Override
@@ -31,36 +31,10 @@ public class Crossbowman extends Shooters {
 
     @Override
     public String getInfo(){
-        return "Арбалетчик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight;
+        return "Арбалетчик" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight + " сила " + strength + " " + state ;
     }
 
-    @Override
-    public void step(ArrayList <Unit> list1, ArrayList <Unit> list2) {
-        System.out.println("Ходит" + " " + getInfo());
-        if (getStrength() == 0 || arrays == 0) {
-            System.out.println(getName() + " израсходовал силы или стрелы " + "состояние " + state);
-            return;
-        }
-        Unit currentEnemy = findClosestEnemy(list1);
-        if (currentEnemy.getState() == "Dead"){
-            System.out.println("Ближайший враг мертв " + currentEnemy.getName());
-            return;
-        }
-        System.out.println(getInfo() + " атакует " + currentEnemy.getInfo() + " крестьянин " + currentEnemy.state);
-        doAttack(currentEnemy);
-        state = "Attack";
-       
-        for (Unit unit: list2){
-            if(unit instanceof Countryman && unit.state == "Stand"){
-                arrays+=1;
-                unit.state = "Busy";
-                System.out.println(getInfo() + " получил стрелы от " + unit.getInfo() + " "  + unit.state);
-                return;
-            } 
-        }
-        arrays--;
-        System.out.println("Количесиво стрел " + arrays);
-}
+
 
 
 }

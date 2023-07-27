@@ -12,7 +12,7 @@ public class Rover extends Infantrys {
     }
 
     public Rover(String name, int x, int y){
-        super(name, 10, 8, 10, 7, 7, 7, 7, 1, x, y, "Stand", 8);
+        super(name, 10, 8, 10, 7, 7, 7, 7, 2, x, y, "Stand", 8);
         this.reticence = 9;
         this.elusiveness = 8;
     }
@@ -45,26 +45,14 @@ public class Rover extends Infantrys {
 
     @Override
     public String getInfo(){
-        return "Разбойник" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight;
+        return "Разбойник" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight + " сила " + strength + " " + state ;
     }
 
 
-    @Override
-    public void step(ArrayList <Unit> list1, ArrayList <Unit> list2) {
-        System.out.println("Ходит" + " " + getInfo());
-        if (getStrength() == 0 ) {
-            System.out.println(getInfo() + " израсходовал силы " + " состояние " + state);
-            return;
-        }
-        Unit currentEnemy = findClosestEnemy(list1);
-        if (currentEnemy.getState() == "Dead"){
-            System.out.println("Ближайший враг мертв " + currentEnemy.getName());
-            currentEnemy.coordinate.getX(); 
-        }
-        System.out.println(getInfo() + " атакует " + currentEnemy.getInfo() + " " + currentEnemy.state  );
-        doAttack(currentEnemy);
-        state = "Attack";
-       
+    
     }
-}
+
+    
+
+
 

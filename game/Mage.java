@@ -8,7 +8,7 @@ public class Mage extends Magicians {
     }
 
     public Mage(String name, int x, int y){
-        super(name, 10, 5, 5, 3, 3, 3, 3, 1, x, y, "Stand", 10, 10);
+        super(name, 10, 5, 5, 3, 3, 3, 3, 3, x, y, "Stand", 10, 10);
     }
 
     @Override
@@ -21,7 +21,7 @@ public class Mage extends Magicians {
     }
 
     public String getInfo(){
-        return "Маг" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight;
+        return "Маг" + " " + name + " " + "x: " + coordinate.x + " " +"y: " + coordinate.y+ " " + "инициатива" + " " + sleight + " сила " + strength + " " + state ;
     }
     
 }

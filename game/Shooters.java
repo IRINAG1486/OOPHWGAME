@@ -15,33 +15,34 @@ public abstract class Shooters extends Unit {
 
 @Override
     public void step(ArrayList <Unit> list1, ArrayList <Unit> list2) {
-        System.out.println("Ходит" + " " + getInfo());
+        //System.out.println("Ходит" + " " + getInfo());
         if (getStrength() == 0 || arrays == 0) {
-            System.out.println(getName() + " израсходовал силы или стрелы " + "состояние " + state);
+           // System.out.println(getName() + " израсходовал силы или стрелы " + "состояние " + state);
             return;
         }
-        Unit currentEnemy = findClosestEnemy(list1);
-        if (currentEnemy.getState() == "Dead"){
-            System.out.println("Ближайший враг мертв " + currentEnemy.getName());
-            return;
-        }
-        System.out.println(getInfo() + " атакует " + currentEnemy.getInfo() + " " + currentEnemy.state);
+        Unit currentEnemy = findClosestEnemy(list2);
+        if(currentEnemy != null){
+        //System.out.println(getInfo() + " атакует " + currentEnemy.getInfo());
         doAttack(currentEnemy);
         state = "Attack";
+        //System.out.println("Состояние врага " + currentEnemy.state);
        
-        for (Unit unit: list2){
+        for (Unit unit: list1){
             if(unit instanceof Countryman && unit.state == "Stand"){
                 arrays+=1;
                 unit.state = "Busy";
-                System.out.println(getInfo() + " получил стрелы от " + unit.getInfo() + " "  + unit.state);
+            
+                //System.out.println(getInfo() + " получил стрелы от " + unit.getInfo() + " количество стрел " + arrays + " состояние крестьянина "  + unit.state);
                 return;
             }
            
            
         }
         arrays--;
-        System.out.println("Количесиво стрел " + arrays);
+        //System.out.println("Количесиво стрел " + arrays);
 }
+else return;
+    }
 
 
 public String getInfo(){
